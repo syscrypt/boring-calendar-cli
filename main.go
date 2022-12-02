@@ -89,21 +89,25 @@ func createEvents() []*Event {
 		var endTimeUnix int64
 		for {
 			startTimeStr := readLine("Enter start time [hh:mm]")
-			_, err := time.Parse("15:04", startTimeStr)
+			startTime, err := time.Parse("15:04", startTimeStr)
 			if err != nil {
 				fmt.Printf("error parsing start time, invalid format: %s\n", err.Error())
 				continue
 			}
+			fmt.Println(startTime)
+			startTimeUnix = startTime.Unix()
 			break
 		}
 
 		for {
 			endTimeStr := readLine("Enter end time [hh:mm]")
-			_, err := time.Parse("15:04", endTimeStr)
+			endTime, err := time.Parse("15:04", endTimeStr)
 			if err != nil {
 				fmt.Printf("error parsing end time, invalid format: %s\n", err.Error())
 				continue
 			}
+			fmt.Println(endTime)
+			endTimeUnix = endTime.Unix()
 			break
 		}
 
